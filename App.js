@@ -8,6 +8,8 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
+import TabNavigator from 'react-native-tab-navigator';
+
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -18,13 +20,35 @@ const instructions = Platform.select({
 
 type Props = {};
 export default class App extends Component<Props> {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      selectedTab: 'home'
+    }
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-      </View>
+      <TabNavigator>
+        <TabNavigator.Item
+          selected={this.state.selectedTab === 'home'}
+          title="Home"
+          // renderIcon={() => <Image source={...} />}
+          // renderSelectedIcon={() => <Image source={...} />}
+          // badgeText="1"
+          onPress={() => this.setState({ selectedTab: 'home' })}>
+          <View style={styles.page1}></View>
+        </TabNavigator.Item>
+        <TabNavigator.Item
+          selected={this.state.selectedTab === 'profile'}
+          title="Profile"
+          // renderIcon={() => <Image source={...} />}
+          // renderSelectedIcon={() => <Image source={...} />}
+          onPress={() => this.setState({ selectedTab: 'profile' })}>
+          <View style={styles.page2}></View>
+        </TabNavigator.Item>
+      </TabNavigator>
     );
   }
 }
@@ -32,18 +56,14 @@ export default class App extends Component<Props> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  page1: {
+    flex: 1,
+    backgroundColor: 'red',
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+  page2: {
+    flex: 1,
+    backgroundColor: 'yellow',
+  }
 });
