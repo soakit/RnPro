@@ -4,6 +4,13 @@ class PopularScreen extends React.Component {
 	static navigationOptions = ({ navigation, navigationOptions }) => {
 		return {
 			title: '热门',
+			headerRight: (
+				<Button
+					onPress={() => navigation.navigate('MyModal')}
+					title="Modal"
+					color="#000"
+				/>
+			),
 			headerStyle: {
 				backgroundColor: navigationOptions.headerStyle.backgroundColor
 			},

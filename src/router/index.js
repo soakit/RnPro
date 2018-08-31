@@ -1,19 +1,17 @@
+import { StackNavigator } from 'react-navigation'
+
 import PopularScreen from '../views/popular'
 import TrendingScreen from '../views/trending'
 import FavoriteScreen from '../views/favorite'
 import MyScreen from '../views/my'
 
-export default {
-	Popular: { screen: PopularScreen },
-	Trending: { screen: TrendingScreen },
-	Favorite: { screen: FavoriteScreen },
-	My: { screen: MyScreen }
-}
+import ModalScreen from '../components/modal'
 
-// 初始路由
-export const routerConfig = {
+const routerConfig = {
+	// 初始路由
 	initialRouteName: 'Popular',
 
+	// 路由的其他配置(meta)
 	navigationOptions: {
 		headerStyle: {
 			backgroundColor: '#f4511e'
@@ -25,3 +23,26 @@ export const routerConfig = {
 		}
 	}
 }
+
+export default StackNavigator(
+	{
+		Main: {
+			screen: StackNavigator(
+				{
+					Popular: { screen: PopularScreen },
+					Trending: { screen: TrendingScreen },
+					Favorite: { screen: FavoriteScreen },
+					My: { screen: MyScreen }
+				},
+				routerConfig
+			)
+		},
+		MyModal: {
+			screen: ModalScreen
+		}
+	},
+	{
+		mode: 'modal',
+		headerMode: 'none'
+	}
+)

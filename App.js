@@ -1,6 +1,10 @@
-import { createStackNavigator } from 'react-navigation'
-import router, { routerConfig } from './src/router'
+import React from 'react'
+import Router from './src/router'
 
-const App = createStackNavigator(router, routerConfig)
+class App extends React.Component {
+  render() {
+    return <Router />;
+  }
+}
 
 export default App
