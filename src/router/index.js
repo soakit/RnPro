@@ -1,4 +1,5 @@
-import { StackNavigator } from 'react-navigation'
+// The StackNavigator function name is deprecated, please use createStackNavigator instead
+import { createStackNavigator } from 'react-navigation'
 
 import PopularScreen from '../views/popular'
 import TrendingScreen from '../views/trending'
@@ -24,10 +25,10 @@ const routerConfig = {
 	}
 }
 
-export default StackNavigator(
+export default createStackNavigator(
 	{
 		Main: {
-			screen: StackNavigator(
+			screen: createStackNavigator(
 				{
 					Popular: { screen: PopularScreen },
 					Trending: { screen: TrendingScreen },

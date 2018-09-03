@@ -18,6 +18,11 @@ class PopularScreen extends React.Component {
 			headerTitleStyle: navigationOptions.headerTitleStyle
 		}
 	}
+	componentWillMount() {
+		// ctrl + M remote JS Debugging
+		// 查看控制台
+		console.log('componentWillMount')
+	}
 	render() {
 		return (
 			<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
